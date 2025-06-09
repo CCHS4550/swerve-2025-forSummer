@@ -33,7 +33,7 @@ public class SparkUtil {
         return;
       }
     }
-    doubleConsumers.accept(nums); 
+    doubleConsumers.accept(nums);
   }
 
   public static boolean isOK(SparkBase spark) {

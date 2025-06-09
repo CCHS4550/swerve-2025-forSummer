@@ -95,8 +95,10 @@ public final class Constants {
     public static final boolean backLeftDriveEncoderInverted = true;
     public static final boolean backRightDriveEncoderInverted = true;
 
-    public static final double driveEncoderPositionFactor = 2* Math.PI / driveMotorReduction; // rotations to radians
-    public static final double driveEncoderVeloFactor = (2 * Math.PI) / 60 / driveMotorReduction; // rpm to rad/sec
+    public static final double driveEncoderPositionFactor =
+        2 * Math.PI / driveMotorReduction; // rotations to radians
+    public static final double driveEncoderVeloFactor =
+        (2 * Math.PI) / 60 / driveMotorReduction; // rpm to rad/sec
 
     // Drive PID configuration values are placeholders from mechanical advantage
     public static final double driveKp = 0.0;
@@ -109,6 +111,5 @@ public final class Constants {
     public static final double driveSimKv = 0.0789;
 
     public static double wheelRadius = 99999; // in meters
-    
   }
 }

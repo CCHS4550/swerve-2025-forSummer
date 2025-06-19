@@ -77,6 +77,10 @@ public class Module {
     return inputs.driveSpeedVelo * Constants.driveConstants.wheelRadius;
   }
 
+  public SwerveModulePosition getPosition() {
+    return new SwerveModulePosition(getPosMeters(), getAngle());
+  }
+
   public SwerveModuleState getState() {
     return new SwerveModuleState(getVelo(), getAngle());
   }

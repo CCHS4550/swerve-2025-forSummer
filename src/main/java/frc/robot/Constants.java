@@ -14,7 +14,11 @@
 package frc.robot;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.system.plant.DCMotor;
+import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.RobotBase;
 
 /**
@@ -25,7 +29,6 @@ import edu.wpi.first.wpilibj.RobotBase;
 public final class Constants {
   public static final Mode simMode = Mode.SIM;
   public static final Mode currentMode = RobotBase.isReal() ? Mode.REAL : simMode;
-
   public static enum Mode {
     /** Running on a real robot. */
     REAL,
@@ -36,8 +39,24 @@ public final class Constants {
     /** Replaying from a log file. */
     REPLAY
   }
+  
+  public static boolean isFlipped(){
+    return DriverStation.getAlliance().isPresent()
+                  && DriverStation.getAlliance().get() == Alliance.Red;
+  }
 
   public final class driveConstants {
+    public static final double maxSpeed = 4.8; //meters/second
+    public static final double trackWidth = Units.inchesToMeters(99999);
+    public static final double wheelBase = Units.inchesToMeters(99999);
+    public static final double driveBaseRadius = Math.hypot(trackWidth/2.0, wheelBase/2.0);
+    public static final Translation2d[] moduleTranslations = new Translation2d[] {
+      new Translation2d(trackWidth/2.0, wheelBase/ 2.0),
+      new Translation2d(trackWidth/2.0, - wheelBase/ 2.0),
+      new Translation2d(- trackWidth/2.0, wheelBase/ 2.0),
+      new Translation2d(-trackWidth/2.0, -wheelBase/ 2.0)
+    };
+    
     public static final int pigeonCanID = 9999;
     public static final double odometryFrequency = 120.0;
 

@@ -15,11 +15,20 @@ package frc.robot;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.geometry.Rotation3d;
+import edu.wpi.first.math.geometry.Translation3d;
+import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.RobotBase;
+
+import edu.wpi.first.apriltag.AprilTagFieldLayout;
+import edu.wpi.first.apriltag.AprilTagFields;
+
+import edu.wpi.first.math.geometry.Pose2d;
+
 
 /**
  * This class defines the runtime mode used by AdvantageKit. The mode is always "real" when running
@@ -130,5 +139,28 @@ public final class Constants {
     public static final double driveSimKv = 0.0789;
 
     public static double wheelRadius = 99999; // in meters
+    
   }
+  public class aprilTagConstants {
+    public static final AprilTagFieldLayout aprilTagFieldLayout = AprilTagFieldLayout.loadField(AprilTagFields.k2025Reefscape);
+
+
+    //I feel like for initial testing and starting out, we should use the 2025 layout (Ruhan)
+    public static final Map<Integer, Pose2d> tagMap = aprilTagFieldLayout.getTags().stream().map(tag -> Map.entry (tag.ID, tag.pose.toPose2d()));
+
+
+  } 
+
+  // Camera Constants
+
+  public class cameraOne{
+    public static final String name = "that random annoying cobra commanders mentor at utah"; // change this obviously
+
+    //Translation/Location Information
+    public static final Translation3d robotCenterToCam = new Translation3d(9999, 99999, 99999);
+    public static final Rotation3d cameraRotation3D = new Rotation3d(9999, 9999, 9999);
+
+    public static final Transform3d cameraOffset3d = new Transform3d(robotCenterToCam, cameraRotation3d);
+  }
+  // add more cameras as needed
 }
